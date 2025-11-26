@@ -1,31 +1,42 @@
-local WindUI
-local ok, result = pcall(function()
-    return require("./src/Init")
-end)
-
-if ok then
-    WindUI = result
-else
-    WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
-end
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
 local Window = WindUI:CreateWindow({
-    Title = "Prison Life Hub",
-    Author = "by SheScripts",
+    Title = "Prison Life",
+    Icon = "star",
+    IconSize = 13,
+    Radius = 13,
+    ElementsRadius = 11,
     Folder = "prisonlifehub",
-    Icon = "sfsymbols:appleLogo",
-    IconSize = 44,
-    NewElements = true,
-    HideSearchBar = false,
-    OpenButton = {
-        Title = "Open UI",
-        CornerRadius = UDim.new(1,0),
-        StrokeThickness = 3,
-        Enabled = true,
-        Draggable = true,
-        OnlyMobile = false,
-        Color = ColorSequence.new(Color3.fromHex("#FF69B4"), Color3.fromHex("#FF69B4"))
-    }
+    Size = UDim2.fromOffset(560, 300),
+    MinSize = Vector2.new(560, 350),
+    MaxSize = Vector2.new(850, 420),
+    Transparent = true,
+    Theme = "Dark",
+    Resizable = true,
+    SideBarWidth = 150,
+    Background = "https://raw.githubusercontent.com/mdvdhh/Image/refs/heads/main/Blur.webp",
+    BackgroundImageTransparency = 0.42,
+    HideSearchBar = true,
+    ScrollBarEnabled = true,
+    User = {
+        Enabled = false,
+        Anonymous = false,
+        Callback = function() end,
+    },
+})
+
+Window:EditOpenButton({
+    Title = " Open ",
+    Icon = "airplay",
+    CornerRadius = UDim.new(0,25),
+    StrokeThickness = 2,
+    Color = ColorSequence.new( 
+        Color3.fromHex("#BD08FF"), 
+        Color3.fromHex("#00FFFF")
+    ),
+    OnlyMobile = false,
+    Enabled = true,
+    Draggable = true,
 })
 
 local AimbotTab = Window:Tab({
@@ -934,4 +945,5 @@ TeleportTab:Button({
     Callback = function()
         game.Players.LocalPlayer.Character:PivotTo(CFrame.new(Vector3.new(822.916504, 125.839996, 2588.562744)))
     end
+
 })
